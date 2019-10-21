@@ -24,6 +24,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           path: 'account',
           loadChildren: () => import('./account/account.module').then(m => m.OatzAccountModule)
         },
+        {
+          path: 'reports',
+          loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
+        },
         ...LAYOUT_ROUTES
       ],
       { enableTracing: DEBUG_INFO_ENABLED }

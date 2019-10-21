@@ -37,16 +37,18 @@
   "devDependencies": {
     "@angular/cli": "8.3.1",
     "@angular/compiler-cli": "8.2.4",
+    "@biesbjerg/ngx-translate-extract": "^4.2.0",
     "@ngtools/webpack": "8.3.1",
+    "@openapitools/openapi-generator-cli": "0.0.14-4.0.2",
     "@types/chai": "4.2.0",
     "@types/chai-string": "1.4.2",
     "@types/jest": "24.0.18",
     "@types/mocha": "5.2.7",
     "@types/node": "10.12.27",
+    "@types/selenium-webdriver": "4.0.2",
     "@typescript-eslint/eslint-plugin": "2.0.0",
     "@typescript-eslint/eslint-plugin-tslint": "2.0.0",
     "@typescript-eslint/parser": "2.0.0",
-    "@types/selenium-webdriver": "4.0.2",
     "angular2-template-loader": "0.6.2",
     "autoprefixer": "9.6.1",
     "base-href-webpack-plugin": "2.0.0",
@@ -97,7 +99,6 @@
     "tslint": "5.19.0",
     "typescript": "3.4.5",
     "webdriver-manager": "12.1.6",
-    "@openapitools/openapi-generator-cli": "0.0.14-4.0.2",
     "webpack": "4.39.3",
     "webpack-cli": "3.3.7",
     "webpack-dev-server": "3.8.0",
@@ -133,7 +134,8 @@
     "webpack:prod": "npm run cleanup && npm run webpack:prod:main && npm run clean-www",
     "webpack:test": "npm run test",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
+    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
+    "extract-i18n": "ngx-translate-extract --input ./src --output ./src/main/webapp/i18n/*/*.json --clean --sort --format namespaced-json"
   },
   "jestSonar": {
     "reportPath": "target/test-results/jest",
