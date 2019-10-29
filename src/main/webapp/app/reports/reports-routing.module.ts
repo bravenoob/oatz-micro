@@ -7,7 +7,6 @@ const routes: Routes = [
     path: '',
     component: ReportsComponent,
     data: {
-      authorities: ['USER_ROLE'],
       pageTitle: 'reports.title'
     }
   }

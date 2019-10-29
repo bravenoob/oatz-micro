@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { throwError } from 'rxjs';
 
@@ -32,6 +32,7 @@ describe('Component Tests', () => {
     it('should send the current identity upon save', () => {
       // GIVEN
       const accountValues: Account = {
+        id: 2,
         firstName: 'John',
         lastName: 'Doe',
 

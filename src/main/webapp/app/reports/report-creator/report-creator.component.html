@@ -1,0 +1,10 @@
+<div>
+    <h3>
+        <span id="reports-page-heading" jhiTranslate="reports.title">Add Report</span>
+    </h3>
+    <jhi-reportform
+        [availableTechnologies]="technologies$ | async"
+        [availableProjects]="projects$ | async"
+        (addReport)="addReport($event)">
+    </jhi-reportform>
+</div>

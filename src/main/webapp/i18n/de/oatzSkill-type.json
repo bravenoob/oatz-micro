@@ -1,0 +1,9 @@
+{
+  "oatzApp": {
+    "Type": {
+      "null": "",
+      "PROJECT": "PROJECT",
+      "COURSE": "COURSE"
+    }
+  }
+}

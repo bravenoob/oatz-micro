@@ -1,0 +1,27 @@
+{
+  "oatzApp": {
+    "oatzSkillSkill": {
+      "home": {
+        "title": "Skills",
+        "createLabel": "Skill erstellen",
+        "createOrEditLabel": "Skill erstellen oder bearbeiten",
+        "search": "Suche nach Skill",
+        "notFound": "No Skills found"
+      },
+      "delete": {
+        "question": "Soll Skill {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Skill"
+      },
+      "skillName": "Skill Name"
+    }
+  },
+  "oatzSkillApp": {
+    "oatzSkillSkill": {
+      "created": "Skill erstellt mit ID {{ param }}",
+      "updated": "Skill aktualisiert mit ID {{ param }}",
+      "deleted": "Skill gelöscht mit ID {{ param }}"
+    }
+  }
+}

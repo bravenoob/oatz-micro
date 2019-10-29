@@ -1,0 +1,28 @@
+{
+  "oatzApp": {
+    "oatzSkillEnterprise": {
+      "home": {
+        "title": "Enterprises",
+        "createLabel": "Enterprise erstellen",
+        "createOrEditLabel": "Enterprise erstellen oder bearbeiten",
+        "search": "Suche nach Enterprise",
+        "notFound": "No Enterprises found"
+      },
+      "delete": {
+        "question": "Soll Enterprise {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Enterprise"
+      },
+      "title": "Title",
+      "projects": "Projects"
+    }
+  },
+  "oatzSkillApp": {
+    "oatzSkillEnterprise": {
+      "created": "Enterprise erstellt mit ID {{ param }}",
+      "updated": "Enterprise aktualisiert mit ID {{ param }}",
+      "deleted": "Enterprise gelöscht mit ID {{ param }}"
+    }
+  }
+}

@@ -2,7 +2,8 @@
   "generator-jhipster": {
     "promptValues": {
       "packageName": "com.bd.bern",
-      "nativeLanguage": "en"
+      "nativeLanguage": "en",
+      "microservicePath": "C:\\work\\projects\\oatz\\oatz-skills"
     },
     "jhipsterVersion": "6.4.1",
     "applicationType": "gateway",

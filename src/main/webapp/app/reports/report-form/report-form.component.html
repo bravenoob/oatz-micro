@@ -1,1 +1,38 @@
-<p>reportform works!</p>
+<form class="ui form segment" [formGroup]="reportFrom" (ngSubmit)="submitForm()">
+    <p>Add a report</p>
+    <div class="field">
+        <label>Used technologies</label>
+        <div class="ui segments">
+            <div class="ui segment">
+                <jhi-multi-select-drop-down
+                    [parent]="reportFrom"
+                    [control]="technologies"
+                    [availableItems]="availableTechnologies"
+                ></jhi-multi-select-drop-down>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>Month</label>
+        <jhi-month-picker [parent]="reportFrom" [control]="date"></jhi-month-picker>
+    </div>
+    <div class="field">
+        <label>Project</label>
+        <div class="ui segments">
+            <div class="ui segment">
+                <jhi-single-select-drop-down [parent]="reportFrom"
+                                             [control]="project"
+                                             [availableItems]="availableProjects">
+                </jhi-single-select-drop-down>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>Additional description</label>
+        <textarea rows="2" placeholder="Notes" formControlName="description"></textarea>
+    </div>
+    <button class="ui button" type="submit"
+            [disabled]="reportFrom.invalid">
+        Speichern
+    </button>
+</form>

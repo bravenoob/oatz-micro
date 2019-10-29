@@ -1,0 +1,11 @@
+<div class="content">
+    <div class="header">{{report.project.title}}</div>
+    <div *ngIf="report.description" class="description">{{ report.description}}</div>
+    <div class="metadata">
+    <span *ngFor="let technology of report.technologies; last as l">
+      {{technology}}<span *ngIf="!l">, </span>
+    </span>
+        <br>
+        Month {{report.date | date}}
+    </div>
+</div>

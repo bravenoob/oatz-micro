@@ -1,0 +1,22 @@
+<div [formGroup]="parent">
+    <sui-multi-select class="ui dropdown"
+                      [formControl]="control"
+                      [options]="availableItems"
+                      labelField="name"
+                      [maxSelected]="50"
+                      icon="list"
+                      #select>
+        <div class="ui icon search input">
+            <i class="search icon"></i>
+            <input suiSelectSearch type="text" placeholder="Search options...">
+        </div>
+        <div class="divider"></div>
+        <div class="header">
+            <i class="list icon"></i>
+            Options
+        </div>
+        <div class="scrolling menu">
+            <sui-select-option *ngFor="let option of select.filteredOptions" [value]="option"></sui-select-option>
+        </div>
+    </sui-multi-select>
+</div>

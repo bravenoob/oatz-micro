@@ -9,13 +9,13 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   exports: [
+    ReactiveFormsModule,
     FormsModule,
     CommonModule,
     NgbModule,
     NgJhipsterModule,
     InfiniteScrollModule,
     FontAwesomeModule,
-    ReactiveFormsModule,
     TranslateModule
   ]
 })

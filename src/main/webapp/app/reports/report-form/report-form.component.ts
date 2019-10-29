@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Report, Technology } from 'app/reports/report';
+import { IProject } from 'app/shared/model/oatzSkill/project.model';
 
 @Component({
   selector: 'jhi-reportform',
@@ -7,10 +9,35 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./report-form.component.scss']
 })
 export class ReportFormComponent implements OnInit {
+  @Input()
+  availableTechnologies: Technology[];
+
+  @Input()
+  availableProjects: IProject[];
+
+  @Output()
+  addReport = new EventEmitter<Report>();
+
   reportFrom: FormGroup;
 
-  get technologies(): FormArray {
-    return this.reportFrom.get('technologies') as FormArray;
+  get descriptionInvalid() {
+    return this.reportFrom.get('description').hasError('required') && this.reportFrom.get('description').touched;
+  }
+
+  get technologiesInvalid() {
+    return this.technologies.hasError('required') && this.technologies.touched;
+  }
+
+  get technologies(): FormControl {
+    return this.reportFrom.get('technologies') as FormControl;
+  }
+
+  get project(): FormControl {
+    return this.reportFrom.get('project') as FormControl;
+  }
+
+  get date(): FormControl {
+    return this.reportFrom.get('date') as FormControl;
   }
 
   constructor(private fb: FormBuilder) {}
@@ -23,15 +50,19 @@ export class ReportFormComponent implements OnInit {
     if (this.reportFrom) {
       return;
     }
-
     this.reportFrom = this.fb.group({
-      date: ['', Validators.required],
-      project: [''],
-      technologies: this.buildUsedTechnologiesArray([''])
+      technologies: [{}, Validators.required],
+      date: [new Date(), Validators.required],
+      project: ['', Validators.required],
+      description: ['']
     });
   }
 
-  private buildUsedTechnologiesArray(values: string[]): FormArray {
-    return this.fb.array(values, Validators.required);
+  submitForm() {
+    if (this.reportFrom.invalid) {
+      return;
+    }
+    this.addReport.emit({ ...this.reportFrom.value });
+    this.reportFrom.reset({ date: new Date() });
   }
 }

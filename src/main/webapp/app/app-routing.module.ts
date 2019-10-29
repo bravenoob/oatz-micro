@@ -26,6 +26,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         },
         {
           path: 'reports',
+          data: {
+            authorities: ['ROLE_USER']
+          },
+          canActivate: [UserRouteAccessService],
           loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
         },
         ...LAYOUT_ROUTES

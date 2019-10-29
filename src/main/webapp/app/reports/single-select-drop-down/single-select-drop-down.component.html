@@ -1,0 +1,10 @@
+<div [formGroup]="parent">
+    <sui-select
+        [formControl]="control"
+        [options]="availableItems"
+        labelField="title"
+        [isSearchable]="true"
+        #select>
+        <sui-select-option *ngFor="let option of select.filteredOptions" [value]="option"></sui-select-option>
+    </sui-select>
+</div>
