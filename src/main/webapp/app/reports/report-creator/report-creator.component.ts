@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { ReportService } from 'app/reports/report.service';
 import { Report } from 'app/reports/report';
 import { Observable } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { JhiAlertService } from 'ng-jhipster';
+import { IEnterprise } from 'app/shared/model/oatzSkill/enterprise.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jhi-report-creator',
@@ -14,7 +16,9 @@ export class ReportCreatorComponent implements OnInit {
   technologies$ = this.reportService.getAllTechnologies();
   projects$ = this.reportService.getAllProjectsOfCurrentUser();
 
-  constructor(private reportService: ReportService, protected jhiAlertService: JhiAlertService) {}
+  @Input() update: EventEmitter<string>;
+
+  constructor(private router: Router, private reportService: ReportService, protected alertService: JhiAlertService) {}
 
   ngOnInit(): void {}
 
@@ -22,11 +26,16 @@ export class ReportCreatorComponent implements OnInit {
     this.subscribeToSaveResponse(this.reportService.addReport(report));
   }
 
-  protected subscribeToSaveResponse(result: Observable<HttpResponse<any>>) {
-    result.subscribe({ error: err => this.onError(err) });
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<IEnterprise>>) {
+    result.subscribe(() => this.onSaveSuccess(), error => this.onSaveError(error));
   }
 
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
+  protected onSaveSuccess() {
+    this.update.emit('report saved.');
+    // this.alertService.addAlert({type: 'success', msg: 'A short message', timeout: 5000}, []);
+  }
+
+  protected onSaveError(error: HttpErrorResponse) {
+    this.alertService.error(error.error, error.message, null);
   }
 }

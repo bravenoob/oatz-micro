@@ -10,9 +10,9 @@ import { MultiSelectDropDownComponent } from './multi-select-drop-down/multi-sel
 import { SuiModule } from 'ng2-semantic-ui';
 import { ReportCreatorComponent } from './report-creator/report-creator.component';
 import { SingleSelectDropDownComponent } from './single-select-drop-down/single-select-drop-down.component';
-import { ReportSearchListComponent } from './report-search-list/report-search-list.component';
 import { ReportSearchComponent } from './report-search/report-search.component';
 import { ReportSearchListItemComponent } from './report-search-list-item/report-search-list-item.component';
+import { OatzSharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,10 +22,9 @@ import { ReportSearchListItemComponent } from './report-search-list-item/report-
     MultiSelectDropDownComponent,
     ReportCreatorComponent,
     SingleSelectDropDownComponent,
-    ReportSearchListComponent,
     ReportSearchComponent,
     ReportSearchListItemComponent
   ],
-  imports: [CommonModule, ReportsRoutingModule, ReactiveFormsModule, FormsModule, SuiModule]
+  imports: [CommonModule, ReportsRoutingModule, ReactiveFormsModule, FormsModule, SuiModule, OatzSharedModule]
 })
 export class ReportsModule {}

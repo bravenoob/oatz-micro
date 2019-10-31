@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Report, SkillAppliedDTO, Technology } from 'app/reports/report';
+import { Report, SkillAppliedDTO } from 'app/reports/report';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import 'rxjs-compat/add/operator/do';
 import { SkillService } from 'app/entities/oatzSkill/skill/skill.service';
 import 'rxjs-compat/add/operator/map';
 import { createRequestOption } from 'app/shared/util/request-util';
+import { ISkill } from 'app/shared/model/oatzSkill/skill.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,10 @@ export class ReportService {
     private skillService: SkillService
   ) {}
 
-  getAllTechnologies(): Observable<Technology[]> {
+  getAllTechnologies(): Observable<ISkill[]> {
     return this.skillService.query().pipe(
       filter(response => response.ok),
-      map(request => request.body),
-      map(skills => skills.map(skill => ReportFactory.fromSkill(skill)))
+      map(request => request.body)
     );
   }
 
@@ -48,7 +48,10 @@ export class ReportService {
       switchMap(account =>
         this.http
           .get<SkillAppliedDTO[]>(`${SERVER_API_URL}/services/oatzskill/api/skill-applieds`, {
-            params: createRequestOption({ 'userId.equals': account.id }),
+            params: createRequestOption({
+              'userId.equals': account.id,
+              sort: ['id,desc']
+            }),
             observe: 'response'
           })
           .pipe(
@@ -61,14 +64,12 @@ export class ReportService {
   }
 
   addReport(report: Report): Observable<any> {
-    return this.accountService
-      .identity()
-      .pipe(
-        switchMap(account =>
-          this.http.post(`${SERVER_API_URL}/services/oatzskill/api/skill-applieds`, ReportFactory.toDTO(report, account.id), {
-            responseType: 'text'
-          })
-        )
-      );
+    return this.accountService.identity().pipe(
+      switchMap(account =>
+        this.http.post(`${SERVER_API_URL}/services/oatzskill/api/skill-applieds`, ReportFactory.toDTO(report, account.id), {
+          responseType: 'text'
+        })
+      )
+    );
   }
 }

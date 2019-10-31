@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Report, Technology } from 'app/reports/report';
+import { ISkill } from 'app/shared/model/oatzSkill/skill.model';
 
 @Component({
   selector: 'jhi-multi-select-drop-down',
@@ -15,7 +15,7 @@ export class MultiSelectDropDownComponent {
   control: FormControl;
 
   @Input()
-  availableItems: Technology[];
+  availableItems: ISkill[];
 
   constructor() {}
 }

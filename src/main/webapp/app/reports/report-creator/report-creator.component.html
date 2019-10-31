@@ -2,6 +2,7 @@
     <h3>
         <span id="reports-page-heading" jhiTranslate="reports.title">Add Report</span>
     </h3>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-reportform
         [availableTechnologies]="technologies$ | async"
         [availableProjects]="projects$ | async"

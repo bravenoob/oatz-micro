@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Report, Technology } from 'app/reports/report';
+import { Report } from 'app/reports/report';
 import { IProject } from 'app/shared/model/oatzSkill/project.model';
+import { ISkill } from 'app/shared/model/oatzSkill/skill.model';
 
 @Component({
   selector: 'jhi-reportform',
@@ -10,7 +11,7 @@ import { IProject } from 'app/shared/model/oatzSkill/project.model';
 })
 export class ReportFormComponent implements OnInit {
   @Input()
-  availableTechnologies: Technology[];
+  availableTechnologies: ISkill[];
 
   @Input()
   availableProjects: IProject[];

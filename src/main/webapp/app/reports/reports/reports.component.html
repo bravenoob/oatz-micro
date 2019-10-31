@@ -5,10 +5,10 @@
     <div class="ui two column grid">
         <div class="row">
             <div class="column">
-                <jhi-report-creator></jhi-report-creator>
+                <jhi-report-creator [update]="updateEventEmitter"></jhi-report-creator>
             </div>
             <div class="column">
-                <jhi-report-search></jhi-report-search>
+                <jhi-report-search [update]="updateEventEmitter"></jhi-report-search>
             </div>
         </div>
     </div>
